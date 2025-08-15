@@ -2,55 +2,98 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Coeur en Code</title>
-  <link rel="icon" href="❤">
+  <title>Hall Spacial – Coeur en Code</title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Moon_symbol.svg/120px-Moon_symbol.svg.png">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      padding: 2em;
-      background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
-      font-family: 'Georgia', serif;
-      color: #5c0033;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      font-family: 'Quicksand', sans-serif;
+      background: radial-gradient(ellipse at bottom, #1b0033 0%, #000010 100%);
+      color: #ffffff;
+      overflow-x: hidden;
     }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 0.5em;
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      background-image: url('https://raw.githubusercontent.com/JeanHallAssets/stars/main/stars.png');
+      background-repeat: repeat;
+      animation: twinkle 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes twinkle {
+      from { background-position: 0 0; }
+      to { background-position: -1000px 1000px; }
+    }
+
+    header {
       text-align: center;
+      padding: 4em 2em 2em;
     }
-    p {
+
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+      color: #e0b3ff;
+    }
+
+    header p {
       font-size: 1.2em;
-      margin-bottom: 2em;
-      text-align: center;
+      color: #ccccff;
       max-width: 600px;
+      margin: 0 auto;
     }
+
     ul {
       list-style: none;
       padding: 0;
+      margin-top: 3em;
+      text-align: center;
     }
+
     li {
-      margin: 1em 0;
+      margin: 1.5em 0;
     }
+
     a {
+      font-size: 1.5em;
+      color: #ffd6ff;
       text-decoration: none;
-      color: #800040;
-      font-weight: bold;
-      transition: color 0.3s;
+      transition: color 0.3s, transform 0.3s;
     }
+
     a:hover {
-      color: #ff69b4;
+      color: #ff99cc;
+      transform: scale(1.1);
+    }
+
+    .moon {
+      position: absolute;
+      top: 2em;
+      right: 2em;
+      width: 80px;
+      height: 80px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Moon_symbol.svg/120px-Moon_symbol.svg.png') no-repeat center;
+      background-size: contain;
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
-  <h1>Coeur en Code</h1>
-  <p>Chaque lien est un battement, chaque page une lumière.<br>Explore mes poèmes animés :</p>
+  <div class="stars"></div>
+  <div class="moon"></div>
+  <header>
+    <h1>Bienvenue dans mon hall spacial 🌙</h1>
+    <p>Chaque lien est une étoile, chaque page une émotion. Explorez librement.</p>
+  </header>
   <ul>
     <li><a href="etoile-magique/index.html">🌟 Étoile magique</a></li>
-    <li><a href="souffle-rose/index.html">🌸 Souffle rose</a></li>
-    <!-- Ajoute ici d'autres poèmes -->
+    <li><a href="pluie-douce/index.html">🌧 Pluie douce</a></li>
+    <li><a href="souffle/index.html">🍃 Souffle</a></li>
   </ul>
 </body>
 </html>
