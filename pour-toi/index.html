@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Poèmes du Cœur ❤</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose-fonce: #d23669;
+            --rose-clair: #ffb6c1;
+            --rose-pale: #fff0f5;
+            --violet: #8a2be2;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, var(--rose-pale), #f8e8ff);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #4a2c40;
+            overflow-x: hidden;
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            opacity: 0;
+            font-size: 20px;
+            color: var(--rose-clair);
+            animation: float 15s linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-20vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            color: var(--rose-fonce);
+            margin: 0;
+            font-weight: 700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--rose-fonce), transparent);
+        }
+        
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--violet);
+            margin-top: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .poem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .poem-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(210, 54, 105, 0.15);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 182, 193, 0.3);
+        }
+        
+        .poem-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,182,193,0.1), rgba(255,255,255,0));
+            z-index: -1;
+        }
+        
+        .poem-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(210, 54, 105, 0.25);
+        }
+        
+        .poem-card h2 {
+            font-size: 1.8rem;
+            color: var(--rose-fonce);
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .poem-card h2 .emoji {
+            font-size: 1.5rem;
+        }
+        
+        .poem-card p {
+            color: #6a4a6a;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .poem-card .btn-read {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: linear-gradient(45deg, var(--rose-fonce), var(--violet));
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(210, 54, 105, 0.3);
+        }
+        
+        .poem-card .btn-read:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(210, 54, 105, 0.4);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--rose-fonce);
+            opacity: 0.8;
+        }
+        
+        /* Effet de lumière qui suit la souris */
+        .light-spot {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,182,193,0.2), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+        
+        /* Animation pour les cartes */
+        @media (min-width: 768px) {
+            .poem-card:nth-child(odd) {
+                animation: slideInLeft 1s ease-out;
+            }
+            .poem-card:nth-child(even) {
+                animation: slideInRight 1s ease-out;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cœur flottants en arrière-plan -->
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <!-- Spot de lumière qui suit la souris -->
+    <div class="light-spot" id="light-spot"></div>
+    
+    <div class="container animate_animated animate_fadeIn">
+        <header>
+            <h1>Les Poèmes du Cœur</h1>
+            <div class="subtitle">Où chaque mot est une caresse de l'âme</div>
+        </header>
+        
+        <div class="poem-grid">
+            <!-- Poème 1 -->
+            <div class="poem-card">
+                <h2><span class="emoji">💌</span> Lettre à mon amour</h2>
+                <p>Quand la vie est un vent qui sème le trouble, Ton regard est un port où je me sens paisible...</p>
+                <a href="pour-toi.html" class="btn-read">Lire ce poème</a>
+            </div>
+            
+            <!-- Poème 2 -->
+            <div class="poem-card">
+                <h2><span class="emoji">📖</span> Notre histoire</h2>
+                <p>Le temps passe et les saisons se succèdent, Mais notre histoire est un livre qui n'a pas de fin...</p>
+                <a href="notre-histoire.html" class="btn-read">Découvrir</a>
+            </div>
+            
+            <!-- Poème 3 -->
+            <div class="poem-card">
+                <h2><span class="emoji">🌹</span> Roses et Mots Doux</h2>
+                <p>Je t'offrirai des roses sans épines, Et des mots plus doux que la soie...</p>
+                <a href="roses-et-mots.html" class="btn-read">Lire</a>
+            </div>
+            
+            <!-- Poème 4 -->
+            <div class="poem-card">
+                <h2><span class="emoji">🌟</span> Âme en Harmonie</h2>
+                <p>Avec toi, je me sens complet, une âme en harmonie, Tu es mon guide, ma moitié d'une même vie...</p>
+                <a href="harmonie.html" class="btn-read">Continuer</a>
+            </div>
+        </div>
+        
+        <footer>
+            Avec tout mon amour, Regas_king
+        </footer>
+    </div>
+    
+    <script>
+        // Cœurs flottants
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = 10 + Math.random() * 20 + 's';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(heart);
+            }
+        }
+        
+        // Lumière qui suit la souris
+        document.addEventListener('mousemove', (e) => {
+            const spot = document.getElementById('light-spot');
+            spot.style.left = e.clientX + 'px';
+            spot.style.top = e.clientY + 'px';
+        });
+        
+        // Effet de parallaxe sur les cartes
+        document.querySelectorAll('.poem-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const x = e.offsetX;
+                const y = e.offsetY;
+                const centerX = card.offsetWidth / 2;
+                const centerY = card.offsetHeight / 2;
+                
+                const angleX = (y - centerY) / 20;
+                const angleY = (centerX - x) / 20;
+                
+                card.style.transform = rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-10px) scale(1.02);
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+        });
+        
+        // Initialisation
+        window.onload = function() {
+            createHearts();
+            
+            // Animation au scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate_animated', 'animate_fadeInUp');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.poem-card').forEach(card => {
+                observer.observe(card);
+            });
+        };
+    </script>
+</body>
+</html>
