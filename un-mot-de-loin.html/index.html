@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon journal secret</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Cormorant+Garamond:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #f8f5e9;
+            color: #4b4b4b;
+            line-height: 1.8;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Effet des orbes lumineux */
+        .orb-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.9);
+            animation: moveOrbs 20s infinite ease-in-out;
+            opacity: 0;
+        }
+        
+        .orb:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .orb:nth-child(2) { top: 40%; left: 70%; animation-delay: 5s; }
+        .orb:nth-child(3) { top: 80%; left: 40%; animation-delay: 10s; }
+        .orb:nth-child(4) { top: 60%; left: 10%; animation-delay: 15s; }
+        .orb:nth-child(5) { top: 30%; left: 90%; animation-delay: 20s; }
+        
+        @keyframes moveOrbs {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            50% { transform: translateY(200px) scale(1.2); opacity: 0.8; }
+            90% { opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0; }
+        }
+
+        .journal-container {
+            max-width: 650px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+        .journal-header {
+            text-align: right;
+            border-bottom: 1px solid #dcd7cc;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .journal-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            font-weight: 600;
+            margin: 0;
+            color: #5d4a6f;
+        }
+        .journal-date {
+            font-size: 1.1em;
+            color: #888;
+        }
+        .journal-entry p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            white-space: pre-line;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <div class="orb-container">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <div class="journal-container">
+        <div class="journal-header">
+            <h1>Mon journal secert</h1>
+            <p class="journal-date">Vendredi, 15 août 2025</p>
+        </div>
+        <div class="journal-entry">
+            <p>
+                Onze heures et demie, l'heure sacrée,
+                Où ton doux message vient me retrouver.
+                Le temps est si court, nos mots si brefs,
+                Mais dans chaque ligne, je sens ton souffle,
+                Et ton cœur que j'aime.
+
+                Tu me dis que tu es fatiguée, ma chérie,
+                Que les jours sont longs, que le sommeil est pressé.
+                J'aimerais être là, pour t'offrir la douceur,
+                De mon regard, de ma voix, pour calmer ton cœur.
+
+                Ce poème est mon murmure, un lit de douceur,
+                Pour ton âme fatiguée, une chaleur dans ton cœur.
+                Il est un baiser secret, un espoir, un refuge,
+                Le temps est suspendu, rien d'autre ne bouge,
+                Quand je pense à toi.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
